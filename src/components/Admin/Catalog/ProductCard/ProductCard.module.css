@@ -1,0 +1,63 @@
+.card {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 70px auto 100px 100px 90px 90px 90px;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.card_item {
+  padding: 0 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: normal;
+}
+
+.photo {
+  width: 45px;
+  height: 45px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 50%;
+  justify-self: center;
+}
+
+.btn_visible {
+  width: 35px;
+  height: 18px;
+  border-radius: 9px;
+  border: 1px solid #c5c5c5;
+  justify-self: center;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.btn_visible__on {
+  justify-content: flex-end;
+}
+
+.btn_visible__span {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #c5c5c5;
+}
+.btn_visible__span_on {
+  background-color: #000;
+}
+
+.btn_delete {
+  width: 20px;
+  height: 20px;
+  justify-self: center;
+  border: none;
+  background-color: transparent;
+  background: url(../../../../ui-kit/icons/icon-basket-delete.svg) no-repeat center center;
+}

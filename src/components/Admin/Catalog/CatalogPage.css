@@ -1,0 +1,13 @@
+.admin-catalog {
+  width: 90%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.admin-catalog__control-panel {
+  height: 100px;
+  gap: 30px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
