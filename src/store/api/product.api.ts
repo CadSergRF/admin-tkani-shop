@@ -3,11 +3,24 @@ import { IProduct } from '../../models/IProduct.model';
 import { resFileImageModel } from '../../models/resFileImage.model';
 import { instantsApi } from './instants.api';
 import { TChangePictureCard, TChangeVisibleCard } from '../../models/common.model';
+import { TGetProductRequest } from '../../models/request.model';
+import { TGetSearchProductResponse } from '../../models/response.model';
 
 export const productApi = instantsApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllProducts: builder.query<IProduct[], string>({
       query: () => '/admin/products',
+      providesTags: () => [
+        {
+          type: 'Product',
+        },
+      ],
+    }),
+    getAllSearchProducts: builder.query<TGetSearchProductResponse, TGetProductRequest>({
+      query: (reqParams) => ({
+        url: `/admin/products/query?section=${reqParams.sectionName}&searchStr=${reqParams.searchName}&sortStr=${reqParams.sortName}&paginationLimit=${reqParams.paginationLimit}&paginationPage=${reqParams.paginationPage}`,
+        method: 'GET',
+      }),
       providesTags: () => [
         {
           type: 'Product',

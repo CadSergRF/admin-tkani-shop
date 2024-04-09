@@ -26,6 +26,7 @@ const EditCardForm = ({ card, newCard, isOpen, onClose }: propsEditCard) => {
 
   useEffect(() => {
     reset(card);
+    card.mainData.picture && setCheckImage(true);
   }, [card, reset]);
 
   const [updateProduct] = productApi.useUpdateProductMutation();
@@ -170,7 +171,7 @@ const EditCardForm = ({ card, newCard, isOpen, onClose }: propsEditCard) => {
             <div className="edit-card__item">
               <h2>ВЫБОР РАЗДЕЛОВ КАТАЛОГА</h2>
             </div>
-            {/* Xарактеристики */}
+            {/* Характеристики */}
             <h3>Характеристики</h3>
             <div className="edit-card__items-block">
               <div className="edit-card__item">

@@ -4,8 +4,13 @@ import React, { ChangeEvent, useState } from 'react';
 import clsx from 'clsx';
 
 import styles from './UploadCSV.module.css';
+import { productApi } from '../../../../../store/api/product.api';
+import { useAppSelector } from '../../../../../hooks/redux.hooks';
 
 const UploadCSV = () => {
+  const reqSearchParams = useAppSelector((state) => state.adminReq.reqCatalog);
+  const { refetch } = productApi.useGetAllSearchProductsQuery(reqSearchParams);
+
   const [file, setFile] = useState<File | null>(null);
 
   // Выбор файла
@@ -44,6 +49,7 @@ const UploadCSV = () => {
         const resp = await data.json();
         console.log('resp ', resp);
         setFile(null);
+        refetch();
       }
     } catch (error) {
       console.log('handleupload error' + error);

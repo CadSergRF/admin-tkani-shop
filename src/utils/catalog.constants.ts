@@ -1,12 +1,12 @@
 export const initialGetProductRequest = {
-  sectionName: '',
+  sectionName: 'Все',
   searchName: '',
-  sortName: '',
-  paginationLimit: 0,
+  sortName: 'nameDown',
+  paginationLimit: 100,
   paginationPage: 1,
 };
 
-export const sectionName = [
+export const sectionNameConstant = [
   'Новый год',
   'Сатин (160см.)',
   'Бязь',

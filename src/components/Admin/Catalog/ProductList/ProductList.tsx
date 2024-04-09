@@ -22,14 +22,6 @@ type TProductList = {
 };
 
 const ProductList = ({ cards, error, isLoading }: TProductList) => {
-  // const {
-  //   data: cards,
-  //   error,
-  //   isLoading,
-  // } = productApi.useGetAllProductsQuery(' ', { refetchOnMountOrArgChange: true });
-
-  console.log('вызван');
-
   const [deleteCard] = productApi.useDeleteProductMutation();
   const [updateVisible] = productApi.useUpdateProductVisibleMutation();
 

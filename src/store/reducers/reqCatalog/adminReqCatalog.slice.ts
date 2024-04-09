@@ -20,19 +20,19 @@ export const adminReqCatalogSlice = createSlice({
   initialState,
   reducers: {
     changeSection(state, action: PayloadAction<string>) {
-      state.reqCatalog.searchName = action.payload;
+      state.reqCatalog.sectionName = action.payload;
     },
     changeSearch(state, action: PayloadAction<string>) {
       state.reqCatalog.searchName = action.payload;
     },
     changeSort(state, action: PayloadAction<string>) {
-      state.reqCatalog.searchName = action.payload;
+      state.reqCatalog.sortName = action.payload;
     },
     changePaginationLimit(state, action: PayloadAction<string>) {
-      state.reqCatalog.searchName = action.payload;
+      state.reqCatalog.paginationLimit = parseInt(action.payload);
     },
     changePaginationPage(state, action: PayloadAction<string>) {
-      state.reqCatalog.searchName = action.payload;
+      state.reqCatalog.paginationPage = parseInt(action.payload);
     },
   },
 });

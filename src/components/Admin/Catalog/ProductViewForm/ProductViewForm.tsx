@@ -1,18 +1,20 @@
+import { useAppSelector } from '../../../../hooks/redux.hooks';
 import { productApi } from '../../../../store/api/product.api';
-import { ProductList } from '../ProductList/ProductList';
 import { SearchPanel } from '../SearchPanel/SearchPanel';
+import { ProductList } from '../ProductList/ProductList';
+import { PaginationPanel } from '../PaginationPanel/PaginationPanel';
 
 const ProductViewForm = () => {
-  const {
-    data: cards,
-    error,
-    isLoading,
-  } = productApi.useGetAllProductsQuery(' ', { refetchOnMountOrArgChange: true });
+  const reqSearchParams = useAppSelector((state) => state.adminReq.reqCatalog);
+  const { data, error, isLoading } = productApi.useGetAllSearchProductsQuery(reqSearchParams, {
+    refetchOnMountOrArgChange: true,
+  });
 
   return (
     <section>
       <SearchPanel />
-      <ProductList cards={cards} error={error} isLoading={isLoading} />
+      <ProductList cards={data?.cards} error={error} isLoading={isLoading} />
+      <PaginationPanel countCards={data?.countTotalCards} />
     </section>
   );
 };

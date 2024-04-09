@@ -1,27 +1,49 @@
 import { ChangeEvent } from 'react';
-import { sectionName } from '../../../../utils/catalog.constants';
+import { sectionNameConstant } from '../../../../utils/catalog.constants';
 
 import styles from './SearchPanel.module.css';
 import { adminReqCatalogSlice } from '../../../../store/reducers/reqCatalog/adminReqCatalog.slice';
-import { useAppDispatch } from '../../../../hooks/redux.hooks';
-// import { productApi } from '../../../../store/api/product.api';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/redux.hooks';
 
 const SearchPanel = () => {
-  // const {} = productApi.useGetAllProductsQuery()
+  const reqSearchParams = useAppSelector((state) => state.adminReq.reqCatalog);
+
   const dispatch = useAppDispatch();
+  const handleStoreChangeSection = (section: string) => {
+    dispatch(adminReqCatalogSlice.actions.changeSection(section));
+  };
+  const handleStoreSetSearch = (searchStr: string) => {
+    dispatch(adminReqCatalogSlice.actions.changeSearch(searchStr));
+  };
+  const handleSetSort = (evt: ChangeEvent<HTMLSelectElement>) => {
+    dispatch(adminReqCatalogSlice.actions.changeSort(evt.target.value));
+  };
+  const handleChangePaginationPage = (pageNumber: string) => {
+    dispatch(adminReqCatalogSlice.actions.changePaginationPage(pageNumber));
+  };
+
   const handleChangeSection = (evt: ChangeEvent<HTMLSelectElement>) => {
-    // dispatch(adminReqCatalogSlice.actions.changeSection(evt.target.value));
-    // changeSection(evt.target.value);
-    dispatch(adminReqCatalogSlice.actions.changeSection(evt.target.value));
+    handleChangePaginationPage('1');
+    handleStoreChangeSection(evt.target.value);
+  };
+
+  const handleSetSearch = (evt: ChangeEvent<HTMLInputElement>) => {
+    handleStoreChangeSection('Все');
+    handleChangePaginationPage('1');
+    handleStoreSetSearch(evt.target.value);
   };
 
   return (
     <div className={styles.searchPanel}>
       <label htmlFor="section-select">
         По разделам:
-        <select name="section" id="section-select" onChange={handleChangeSection}>
-          <option value="all">Все</option>
-          {sectionName?.map((item, i) => (
+        <select
+          name="section"
+          id="section-select"
+          value={reqSearchParams.sectionName}
+          onChange={handleChangeSection}>
+          <option value="Все">Все</option>
+          {sectionNameConstant?.map((item, i) => (
             <option key={i} value={item}>
               {item}
             </option>
@@ -29,12 +51,16 @@ const SearchPanel = () => {
         </select>
       </label>
       <div>
-        <input type="search" />
+        <input type="search" value={reqSearchParams.searchName} onChange={handleSetSearch} />
         <label htmlFor="section-select">
           Сортировать по:
-          <select name="section" id="section-select">
-            <option value="up">по возрастанию</option>
-            <option value="down">по убыванию</option>
+          <select
+            name="section"
+            id="section-select"
+            value={reqSearchParams.sortName}
+            onChange={handleSetSort}>
+            <option value="nameUp">по возрастанию</option>
+            <option value="nameDown">по убыванию</option>
           </select>
         </label>
       </div>
