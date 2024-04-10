@@ -59,8 +59,8 @@ const SearchPanel = () => {
             id="section-select"
             value={reqSearchParams.sortName}
             onChange={handleSetSort}>
-            <option value="nameUp">по возрастанию</option>
-            <option value="nameDown">по убыванию</option>
+            <option value="articulUp">по возрастанию</option>
+            <option value="articulDown">по убыванию</option>
           </select>
         </label>
       </div>

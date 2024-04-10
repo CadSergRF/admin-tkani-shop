@@ -1,7 +1,7 @@
 export const initialGetProductRequest = {
   sectionName: 'Все',
   searchName: '',
-  sortName: 'nameDown',
+  sortName: 'articulDown',
   paginationLimit: 100,
   paginationPage: 1,
 };

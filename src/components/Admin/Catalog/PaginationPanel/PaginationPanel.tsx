@@ -18,6 +18,10 @@ const PaginationPanel = ({ countTotalCards, countCards }: TPaginationPanelProps)
   const totalPages = countTotalCards
     ? Math.ceil(countTotalCards / reqSearchParams.paginationLimit)
     : 1;
+  // Сколько отображено или пролистано
+  const countViewCards = countCards
+    ? (reqSearchParams.paginationPage - 1) * reqSearchParams.paginationLimit + countCards
+    : 0;
 
   const dispatch = useAppDispatch();
   const handleChangePaginationLimit = (evt: ChangeEvent<HTMLSelectElement>) => {
@@ -59,7 +63,7 @@ const PaginationPanel = ({ countTotalCards, countCards }: TPaginationPanelProps)
             })}></button>
           <p>Товаров</p>
           {/* <p>{reqSearchParams.paginationPage}</p> */}
-          <p>{countCards}</p>
+          <p>{countViewCards}</p>
           <p>из</p>
           {/* <p>{totalPages}</p> */}
           <p>{countTotalCards}</p>
