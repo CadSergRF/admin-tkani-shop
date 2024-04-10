@@ -1,11 +1,14 @@
 import { useMemo, useEffect, useState } from 'react';
-import { IProduct } from '../../../../models/IProduct.model';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import PopupWithForm from '../../../../ui-kit/PopupWithForm/PopupWithForm';
-import './EditCardForm.css';
-import UploadImage from './UploadImage/UploadImage';
 import { productApi } from '../../../../store/api/product.api';
+
+import { IProduct } from '../../../../models/IProduct.model';
+
+import PopupWithForm from '../../../../ui-kit/PopupWithForm/PopupWithForm';
+import UploadImage from './UploadImage/UploadImage';
+
+import './EditCardForm.css';
 
 interface propsEditCard {
   card: IProduct;
@@ -26,7 +29,7 @@ const EditCardForm = ({ card, newCard, isOpen, onClose }: propsEditCard) => {
 
   useEffect(() => {
     reset(card);
-    card.mainData.picture && setCheckImage(true);
+    card.mainData.picture ? setCheckImage(true) : setCheckImage(false);
   }, [card, reset]);
 
   const [updateProduct] = productApi.useUpdateProductMutation();
@@ -40,9 +43,13 @@ const EditCardForm = ({ card, newCard, isOpen, onClose }: propsEditCard) => {
   const onSubmit: SubmitHandler<IProduct> = async (data) => {
     if (newCard) {
       await createProduct(data);
+      setCheckImage(false);
+      reset();
       onClose();
     } else {
       await updateProduct(data);
+      setCheckImage(false);
+      reset();
       onClose();
     }
   };

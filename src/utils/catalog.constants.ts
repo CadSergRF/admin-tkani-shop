@@ -7,7 +7,6 @@ export const initialGetProductRequest = {
 };
 
 export const sectionNameConstant = [
-  'Новый год',
   'Сатин (160см.)',
   'Бязь',
   'Сатин (220-250см.)',

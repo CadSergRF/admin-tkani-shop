@@ -7,11 +7,17 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/redux.hooks';
 import styles from './PaginationPanel.module.css';
 
 type TPaginationPanelProps = {
+  countTotalCards: number | undefined;
   countCards: number | undefined;
 };
 
-const PaginationPanel = ({ countCards }: TPaginationPanelProps) => {
+const PaginationPanel = ({ countTotalCards, countCards }: TPaginationPanelProps) => {
   const reqSearchParams = useAppSelector((state) => state.adminReq.reqCatalog);
+
+  // Всего страниц
+  const totalPages = countTotalCards
+    ? Math.ceil(countTotalCards / reqSearchParams.paginationLimit)
+    : 1;
 
   const dispatch = useAppDispatch();
   const handleChangePaginationLimit = (evt: ChangeEvent<HTMLSelectElement>) => {
@@ -43,7 +49,7 @@ const PaginationPanel = ({ countCards }: TPaginationPanelProps) => {
           <option value="100">100</option>
         </select>
       </label>
-      {countCards && (
+      {countTotalCards && (
         <nav className={styles.pages}>
           <button
             type="button"
@@ -51,17 +57,17 @@ const PaginationPanel = ({ countCards }: TPaginationPanelProps) => {
             className={clsx(styles.pagesDown, {
               [styles.notVisible]: reqSearchParams.paginationPage === 1,
             })}></button>
-          <p>Страница</p>
-          <p>{reqSearchParams.paginationPage}</p>
-          <p>из</p>
+          <p>Товаров</p>
+          {/* <p>{reqSearchParams.paginationPage}</p> */}
           <p>{countCards}</p>
+          <p>из</p>
+          {/* <p>{totalPages}</p> */}
+          <p>{countTotalCards}</p>
           <button
             type="button"
             onClick={handleUpPage}
             className={clsx(styles.pagesUp, {
-              [styles.notVisible]:
-                reqSearchParams.paginationPage ===
-                Math.ceil(countCards / reqSearchParams.paginationLimit),
+              [styles.notVisible]: reqSearchParams.paginationPage === totalPages,
             })}></button>
         </nav>
       )}

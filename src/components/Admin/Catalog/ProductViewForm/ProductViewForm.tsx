@@ -14,7 +14,7 @@ const ProductViewForm = () => {
     <section>
       <SearchPanel />
       <ProductList cards={data?.cards} error={error} isLoading={isLoading} />
-      <PaginationPanel countCards={data?.countTotalCards} />
+      <PaginationPanel countTotalCards={data?.countTotalCards} countCards={data?.cards.length} />
     </section>
   );
 };
