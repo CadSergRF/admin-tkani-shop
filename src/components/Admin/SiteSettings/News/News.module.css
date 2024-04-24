@@ -1,0 +1,71 @@
+.wrapper {
+  padding: 10px 30px;
+  width: 100%;
+  height: calc(100vh - 60px);
+}
+
+.container_btn {
+  width: 100%;
+  text-align: end;
+}
+
+.btn {
+  width: 230px;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 10px;
+  font: 500 16px var(--font-family);
+  text-align: center;
+  color: rgb(255, 255, 255);
+  background-image: linear-gradient(rgb(14, 165, 233) 0%, rgb(2, 132, 199) 100%);
+  box-shadow: inset 0 2px 0 0 hsla(0, 0%, 100%, 0.2), inset 0 -1px 0 0 rgba(0, 0, 0, 0.25),
+    0 2px 6px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-image: linear-gradient(rgb(2, 132, 199) 0%, rgb(3, 105, 161) 100%);
+}
+
+.btn:active {
+  background-image: linear-gradient(rgb(3, 105, 161) 0%, rgb(7, 89, 133) 100%);
+}
+
+.btn:disabled {
+  color: rgb(56, 189, 248);
+  background-color: rgb(224, 242, 254);
+  background-image: none;
+  box-shadow: none;
+  cursor: auto;
+}
+
+.addNews {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.5s linear, opacity 0.5s linear;
+}
+
+.addNews_visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal_container {
+  min-width: 300px;
+  height: 100vh;
+  overflow: auto;
+  padding: 20px;
+  background-color: var(--bgc-main);
+}
+
+.modal_title {
+  font: 500 18px/26px var(--font-family);
+}

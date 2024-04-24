@@ -62,7 +62,6 @@ const PaginationPanel = ({ countTotalCards, countCards }: TPaginationPanelProps)
               [styles.notVisible]: reqSearchParams.paginationPage === 1,
             })}></button>
           <p>Товаров</p>
-          {/* <p>{reqSearchParams.paginationPage}</p> */}
           <p>{countViewCards}</p>
           <p>из</p>
           {/* <p>{totalPages}</p> */}

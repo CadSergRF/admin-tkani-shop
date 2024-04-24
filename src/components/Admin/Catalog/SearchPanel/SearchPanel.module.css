@@ -5,3 +5,11 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.label {
+  font: 500 16px 'Inter', Arial, sans-serif;
+}
+
+.input {
+  margin: 0 10px;
+}

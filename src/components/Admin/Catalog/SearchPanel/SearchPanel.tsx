@@ -35,13 +35,14 @@ const SearchPanel = () => {
 
   return (
     <div className={styles.searchPanel}>
-      <label htmlFor="section-select">
+      <label htmlFor="section-select" className={styles.label}>
         По разделам:
         <select
           name="section"
           id="section-select"
           value={reqSearchParams.sectionName}
-          onChange={handleChangeSection}>
+          onChange={handleChangeSection}
+          className={styles.input}>
           <option value="Все">Все</option>
           {sectionNameConstant?.map((item, i) => (
             <option key={i} value={item}>
@@ -51,14 +52,24 @@ const SearchPanel = () => {
         </select>
       </label>
       <div>
-        <input type="search" value={reqSearchParams.searchName} onChange={handleSetSearch} />
-        <label htmlFor="section-select">
+        <label htmlFor="section-search-input" className={styles.label}>
+          Поиск:
+          <input
+            id="section-search-input"
+            type="search"
+            value={reqSearchParams.searchName}
+            onChange={handleSetSearch}
+            className={styles.input}
+          />
+        </label>
+        <label htmlFor="section-select" className={styles.label}>
           Сортировать по:
           <select
             name="section"
             id="section-select"
             value={reqSearchParams.sortName}
-            onChange={handleSetSort}>
+            onChange={handleSetSort}
+            className={styles.input}>
             <option value="articulUp">по возрастанию</option>
             <option value="articulDown">по убыванию</option>
           </select>

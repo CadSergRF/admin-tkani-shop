@@ -27,7 +27,7 @@ const TopMenu = () => {
           Работа с каталогом
         </NavLink>
         <NavLink
-          to="settings"
+          to="site-settings"
           className={({ isActive }) =>
             clsx(styles.topMenu__link, {
               [styles.topMenu__link_active]: isActive,
