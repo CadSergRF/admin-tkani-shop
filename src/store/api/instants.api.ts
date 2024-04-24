@@ -3,7 +3,7 @@ import { BASE_URL } from '../../utils/main.constants';
 
 export const instantsApi = createApi({
   reducerPath: 'instantsApi',
-  tagTypes: ['Product'],
+  tagTypes: ['Product', 'News'],
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
   }),
